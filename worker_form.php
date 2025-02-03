@@ -1,12 +1,17 @@
 <?php
+session_start();
 include('worker_conn.php');
+$roshan = "Girl";
+echo $roshan;
+$_SESSION["favcolor"] = "green";
+
 ?>
 
 <html>
     <title>Workers data</title>
     <body>
         <h4>Workers Detail form</h4>
-        <form action="worker_save.php" method="POST">
+        <form action="worker_save.php" method="POST" enctype="multipart/form-data">
             <div class="worker_fname">
                 <label>First Name</label>
                 <input type="text" name="worker_fname" placeholder="Enter your first name" required>
@@ -40,6 +45,11 @@ include('worker_conn.php');
                 <input type="number" name="worker_number" placeholder="Enter your contact number" required>
 
             </div>
+            <div class="image_upload">
+                <label>Upload your pic</label>
+                <input type="file" name="worker_image" accept="image/jpeg">
+
+            </div>
             <div class="button">
             <input type="submit">
             </div>
@@ -54,6 +64,7 @@ include('worker_conn.php');
                 <td>Work type</td>
                 <td>Work Department</td>
                 <td>Contact</td>
+                <td>Image</td>
                 <td>Action</td>
             </th>
             <?php
@@ -69,6 +80,7 @@ include('worker_conn.php');
                     <td><?php echo $rows['work_type'];?></td>
                     <td><?php echo $rows['work_department'];?></td>
                     <td><?php echo $rows['contact'];?></td>
+                    <td><img src="<?php echo "photofolder/".$rows['worker_photo'];?>" width="50" height="50"></td>
                     <td><a href="editdata.php?editid=<?php echo $rows['id'];?>">Edit</a>
                     <a href="deletedata.php?deleteid=<?php echo $rows['id'];?>">Delete</a> </td>
                 </tr>

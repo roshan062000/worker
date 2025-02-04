@@ -60,7 +60,7 @@ print_r($worker_value);
                <img src="<?php echo "photofolder/".$worker_value['worker_photo']?>" width="50" height="50"> 
             </div>
             <div class="file_upload">
-                <input type="hidden" value="<?php echo $worker_value['worker_photo']?>" name="earlier_teacher_picture">
+                <input type="hidden" value="<?php echo $worker_value['worker_photo']?>" name="earlier_picture">
                 <label>Upload your pic</label>
                 <input type="file" name="worker_image" accept="image/jpeg">
 

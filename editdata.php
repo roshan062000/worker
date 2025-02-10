@@ -65,6 +65,11 @@ print_r($worker_value);
                 <input type="file" name="worker_image" accept="image/jpeg">
 
             </div>
+            <div class="password">
+                <label>Enter password</label>
+                <input type="text" name="user_password" placeholder="Enter password" value="<?php echo $worker_value['user_password'];?>" required>
+
+            </div>
             <div class="button">
             <input type="submit">
             </div>

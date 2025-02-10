@@ -18,6 +18,7 @@ $worker_gender=$_POST['worker_gender'];
 $work_type=$_POST['work_type'];
 $worker_department=implode(",",$_POST['worker_department']);
 $worker_number=$_POST['worker_number'];
+$user_password=$_POST['user_password'];
 
 
 //sql to check if phonenum exist
@@ -28,7 +29,7 @@ $numrows  = mysqli_num_rows($dataExData);
 //sql to check if phonenum exist
 if($numrows == 0){
 //sql query to insert data
-$sql="INSERT INTO `worker_data`( `fname`, `lname`, `gender`, `work_type`, `work_department`, `contact`,`worker_photo`) VALUES ('$worker_fname','$worker_lname','$worker_gender','$work_type','$worker_department','$worker_number','$image_name')";
+$sql="INSERT INTO `worker_data`( `fname`, `lname`, `gender`, `work_type`, `work_department`, `contact`,`worker_photo`,`user_password`) VALUES ('$worker_fname','$worker_lname','$worker_gender','$work_type','$worker_department','$worker_number','$image_name','$user_password')";
 
 //insert data to db
 $insertData=mysqli_query($mysqli,$sql);

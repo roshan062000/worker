@@ -10,6 +10,7 @@ $worker_gender=$_POST['worker_gender'];
 $work_type=$_POST['work_type'];
 $worker_department=implode(",",$_POST['worker_department']);
 $worker_number=$_POST['worker_number'];
+$user_password=$_POST['user_password'];
 //for id update
 $update_worker_id=$_POST['update_worker_id'];
 
@@ -30,25 +31,25 @@ else{
     $image_name=$_POST['earlier_picture'];
 }
 
-//for updating no
+//for updating number
 $update_number="SELECT * FROM `worker_data` WHERE `contact`='$worker_number'";
 $updateNumber=mysqli_query($mysqli,$update_number);
 $numrows = mysqli_num_rows($updateNumber);
-echo $numrows;
+//echo $numrows; die();
 if($numrows==0){
-        $sql="UPDATE `worker_data` SET `fname`='$worker_fname',`lname`='$worker_lname',`gender`='$worker_gender',`work_type`='$work_type',`work_department`='$worker_department',`contact`='$worker_number',`worker_photo`='$image_name' WHERE id=$update_worker_id";
+        $sql="UPDATE `worker_data` SET `fname`='$worker_fname',`lname`='$worker_lname',`gender`='$worker_gender',`work_type`='$work_type',`work_department`='$worker_department',`contact`='$worker_number',`worker_photo`='$image_name',`user_password`='$user_password' WHERE id=$update_worker_id";
 
-$updateData=mysqli_query($mysqli,$sql);
-if($updateData){
-    echo 'data updated';
+    $updateData=mysqli_query($mysqli,$sql);
     header("Location:worker_form.php");
-}
-else{
-    echo 'data not updated';
-}
-}
-else{
-        echo "same row exist";
+
+
+} else if ($numrows==1) {
+
+         $sql="UPDATE `worker_data` SET `fname`='$worker_fname',`lname`='$worker_lname',`gender`='$worker_gender',`work_type`='$work_type',`work_department`='$worker_department',`contact`='$worker_number',`worker_photo`='$image_name',`user_password`='$user_password' WHERE id=$update_worker_id";
+
+          $updateData=mysqli_query($mysqli,$sql);
+          header("Location:worker_form.php");
+
 }
 
 //sql insertion of data

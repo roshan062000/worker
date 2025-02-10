@@ -50,14 +50,25 @@ $_SESSION["favcolor"] = "green";
                 <input type="file" name="worker_image" accept="image/jpeg">
 
             </div>
+            <div class="password">
+                <label>Enter password</label>
+                <input type="text" name="user_password" placeholder="Enter password" required>
+
+            </div>
             <div class="button">
             <input type="submit">
             </div>
         </form>
         <h4> Worker detail table</h4>
+        <form method="POST" action="deletemultiple.php">
+        <div class="button">
+            <input type="submit" value="Multiple Delete" >
+
+        </div>
         <table>
             <style> table th,td {border:1px, solid black;}</style>
             <th>
+                <td>multiple Delete</td>
                 <td>First Name</td>
                 <td>Last Name</td>
                 <td>Gender</td>
@@ -65,7 +76,9 @@ $_SESSION["favcolor"] = "green";
                 <td>Work Department</td>
                 <td>Contact</td>
                 <td>Image</td>
+                <td>Password</td>
                 <td>Action</td>
+               
             </th>
             <?php
             $sql_fetchdata="SELECT * FROM `worker_data`";
@@ -73,6 +86,7 @@ $_SESSION["favcolor"] = "green";
             while($rows=$result->fetch_assoc())
             {?>
                 <tr>
+                    <td><input type="checkbox" name="multiple_delete[]" value="<?php echo $rows['id'];?>"></td>
                     <td><?php echo $rows['id'];?></td>
                     <td><?php echo $rows['fname'];?></td>
                     <td><?php echo $rows['lname'];?></td>
@@ -81,6 +95,7 @@ $_SESSION["favcolor"] = "green";
                     <td><?php echo $rows['work_department'];?></td>
                     <td><?php echo $rows['contact'];?></td>
                     <td><img src="<?php echo "photofolder/".$rows['worker_photo'];?>" width="50" height="50"></td>
+                    <td><?php echo $rows['user_password'];?></td>
                     <td><a href="editdata.php?editid=<?php echo $rows['id'];?>">Edit</a>
                     <a href="deletedata.php?deleteid=<?php echo $rows['id'];?>">Delete</a> </td>
                 </tr>
@@ -88,5 +103,6 @@ $_SESSION["favcolor"] = "green";
            <?php } ?>
             
         </table>
+     </form>
     </body>
 </html>

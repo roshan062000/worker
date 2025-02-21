@@ -60,6 +60,7 @@ $_SESSION["favcolor"] = "green";
             </div>
         </form>
         <h4> Worker detail table</h4>
+        
         <form method="POST" action="deletemultiple.php">
         <div class="button">
             <input type="submit" value="Multiple Delete" >
@@ -105,4 +106,10 @@ $_SESSION["favcolor"] = "green";
         </table>
      </form>
     </body>
+
+
+
+
+
+ 
 </html>
